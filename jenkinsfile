@@ -30,5 +30,13 @@ stage('Push Image to Docker Hub') {
  echo 'Push Image Completed'       
     }            
 } 
+
+  //Stages are completed. 
+    //Log Out!
+    post{
+        always{
+        sh 'docker logout'
+        }
+    }
  }
- }
+}
