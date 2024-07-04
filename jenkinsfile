@@ -31,12 +31,12 @@ stage('Push Image to Docker Hub') {
     }            
 } 
 
-  //Stages are completed. 
+ /* //Stages are completed. 
     //Log Out!
     post{
         always{
         sh 'docker logout'
         }
-    }
+    }*/
  }
 }
