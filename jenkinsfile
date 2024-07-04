@@ -5,7 +5,7 @@
  stages{
   stage('checkout'){
     steps{
-	git branch: 'main', url: 'https://github.com/ggutu/simplePython-microservices-.git'
+	git clone https://github.com/ggutu/simplePython-microservices-.git
 	}
     }
 	stage('docker build image'){
