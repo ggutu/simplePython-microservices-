@@ -13,7 +13,7 @@
 	stage('docker build image'){
     steps{
 	 script{
-	  sh  'docker build -t gizachewgutu/microservice .'
+	  sh  'docker build -t gizachewgutu/microservice:late .'
 	  sh 'apt install sudo' 
 	   }
 	}
@@ -25,18 +25,20 @@
     }           
 } 
 stage('Push Image to Docker Hub') {         
-    steps{                            
- sh 'docker push gizachewgutu/microservice:2           
- echo 'Push Image Completed'       
+    steps{  
+		script{                       
+ sh 'docker push gizachewgutu/microservice:latest'           
+ echo 'Push Image Completed'      
+		} 
     }            
 } 
-
- /* //Stages are completed. 
-    //Log Out!
-    post{
-        always{
-        sh 'docker logout'
+     stage('Logout of Docker Hub (Optional)') {
+            steps {
+                script {
+                    sh 'docker logout' // Uncomment if you want to log out after pushing
+                    echo 'Docker Logout Completed (Optional)'
+                }
+            }
         }
-    }*/
  }
-}
+ }
