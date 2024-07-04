@@ -14,6 +14,7 @@
     steps{
 	 script{
 	  sh  'docker build -t gizachewgutu/microservice .'
+	  sh 'docker tag $JOB_NAME-python:latest gizachewgutu/microservice:$BUILD_NUMBER'
 	  sh 'apt install sudo' 
 	   }
 	}
