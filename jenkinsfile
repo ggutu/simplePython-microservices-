@@ -26,7 +26,7 @@
 } 
 stage('Push Image to Docker Hub') {         
     steps{                            
- sh 'docker push gizachewgutu/microservice:$BUILD_NUMBER'           
+ sh 'docker push gizachewgutu/microservice:2           
  echo 'Push Image Completed'       
     }            
 } 
