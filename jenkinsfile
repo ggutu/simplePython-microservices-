@@ -5,13 +5,13 @@
  stages{
   stage('checkout'){
     steps{
-	git clone https://github.com/ggutu/simplePython-microservices-.git
+	checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'GitHUB_Credentials-Giz', url: 'https://github.com/ggutu/simplePython-microservices-.git']])
 	}
     }
 	stage('docker build image'){
     steps{
 	 script{
-	  sh  'docker build -t gizachewgutu/devops-integration .'
+	  sh  'docker build -t gizachewgutu/microservice .'
 	   }
 	}
     }
