@@ -1,0 +1,29 @@
+   pipeline 
+   
+   pipeline {
+  agent any 
+ stages{
+  stage('checkout'){
+    steps{
+	git branch: 'main', url: 'https://github.com/ggutu/simplePython-microservices-.git'
+	}
+    }
+	stage('docker build image'){
+    steps{
+	 script{
+	  sh  'docker build -t gizachewgutu/devops-integration .'
+	   }
+	}
+    }
+   /* stage('docker push'){
+    steps{
+	 script{
+	 withCredentials([string(credentialsId: 'dockerHub-pwd', variable: 'dockerHubPWD')]) {
+	     sh 'docker login -u gizachewgutu -p ${dockerHubPWD}'
+	     sh 'docker push gizachewgutu/devops-integration'
+}
+	   }
+	}
+    }*/
+ }
+ }
